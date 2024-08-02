@@ -38,6 +38,7 @@ const hostnames = [
     "raw.githubusercontent.com",
     "user-images.githubusercontent.com",
     "education.github.com",
+    "youtube.com",
 ];
 
 function updateUrlForHost(url, hostnames) {
@@ -47,7 +48,7 @@ function updateUrlForHost(url, hostnames) {
                 `/https://${hostname}/`,
                 `/http://${hostname}/`,
                 `/${hostname}/`,
-                "/github.com/",
+                "/youtube.com/",
             ];
             for (const prefix of prefixes) {
                 if (url.pathname.startsWith(prefix)) {
@@ -67,12 +68,15 @@ export default {
         if (hostnames.some((hostname) => url.pathname.includes(hostname))) {
             updateUrlForHost(url, hostnames);
         } else {
-            url.hostname = "github.com";
+            url.hostname = "youtube.com";
 
             const hostname_prefixes = [
                 "/https://github.com/",
                 "/http://github.com/",
-                "/github.com/",
+                "/github.com/"
+                "/youtube.com/"
+                "/https://youtube.com"
+                "/http://youtube.com",
             ];
             for (const hostname_prefix of hostname_prefixes) {
                 if (url.pathname.startsWith(hostname_prefix)) {
